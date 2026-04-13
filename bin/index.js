@@ -35,7 +35,12 @@ async function downloadFile(relativeRepoPath) {
   // unless SKILL.md expects them in subfolders.
   // Let's create subfolders if needed to be safe.
   
-  const destPath = path.join(process.cwd(), '.claude', 'skills', relativeRepoPath.replace('felicio-ai-toolkit/', ''));
+  // Supprimer les dossiers parents pour l'installation locale
+  let relativePath = relativeRepoPath
+    .replace('felicio-ai-toolkit/', '')
+    .replace('from-skills.sh/', '');
+  
+  const destPath = path.join(process.cwd(), '.claude', 'skills', relativePath);
 
   try {
     const response = await fetch(url);
