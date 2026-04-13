@@ -1,0 +1,35 @@
+{
+  "skills": [
+    {
+      "name": "frontend-aesthetics",
+      "description": "Design system patterns and aesthetics for modern frontend",
+      "files": [
+        "felicio-ai-toolkit/frontend-aesthetics/SKILL.md"
+      ]
+    },
+    {
+      "name": "nextjs-architecture-pattern",
+      "description": "Best practices and folder structure for Next.js projects",
+      "files": [
+        "felicio-ai-toolkit/nextjs-architecture-pattern/SKILL.md"
+      ]
+    },
+    {
+      "name": "ui-moderne-2026",
+      "description": "Modern UI components and references for 2026",
+      "files": [
+        "felicio-ai-toolkit/ui-moderne-2026/SKILL.md",
+        "felicio-ai-toolkit/ui-moderne-2026/references/effects-catalog.md",
+        "felicio-ai-toolkit/ui-moderne-2026/references/oklch.md",
+        "felicio-ai-toolkit/ui-moderne-2026/references/shadcn-components.md"
+      ]
+    },
+    {
+      "name": "ux-ui-audit",
+      "description": "Comprehensive UX/UI audit checklist and patterns",
+      "files": [
+        "felicio-ai-toolkit/ux-ui-audit/SKILL.md"
+      ]
+    }
+  ]
+}
