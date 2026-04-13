@@ -1,6 +1,6 @@
 {
   "name": "@joyboy-dy/felicio-ai-skills",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Distribution de mes skills Claude Code via NPX",
   "main": "bin/index.js",
   "bin": {
