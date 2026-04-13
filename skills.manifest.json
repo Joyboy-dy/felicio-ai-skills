@@ -11,13 +11,13 @@
       "files": ["skills/felicio-ai-toolkit/nextjs-architecture-pattern/SKILL.md"]
     },
     {
-      "name": "ui-moderne-2026",
+      "name": "ui-modern-2026",
       "description": "Modern UI components and references for 2026",
       "files": [
-        "skills/felicio-ai-toolkit/ui-moderne-2026/SKILL.md",
-        "skills/felicio-ai-toolkit/ui-moderne-2026/references/effects-catalog.md",
-        "skills/felicio-ai-toolkit/ui-moderne-2026/references/oklch.md",
-        "skills/felicio-ai-toolkit/ui-moderne-2026/references/shadcn-components.md"
+        "skills/felicio-ai-toolkit/ui-modern-2026/SKILL.md",
+        "skills/felicio-ai-toolkit/ui-modern-2026/references/effects-catalog.md",
+        "skills/felicio-ai-toolkit/ui-modern-2026/references/oklch.md",
+        "skills/felicio-ai-toolkit/ui-modern-2026/references/shadcn-components.md"
       ]
     },
     {
