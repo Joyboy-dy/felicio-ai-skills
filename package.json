@@ -1,5 +1,5 @@
 {
-  "name": "@joyboy-dy/felicio-ai-skills",
+  "name": "@Joyboy-dy/felicio-ai-skills",
   "version": "1.0.0",
   "description": "Distribution de mes skills Claude Code via NPX",
   "main": "bin/index.js",
