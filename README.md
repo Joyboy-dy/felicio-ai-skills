@@ -7,7 +7,7 @@ Un écosystème complet pour distribuer et installer des skills Claude Code via 
 Vous pouvez utiliser ce toolkit directement via NPX sans installation préalable dans n'importe quel projet :
 
 ```bash
-npx @Joyboy-dy/felicio-ai-skills <commande>
+npx @joyboy-dy/felicio-ai-skills <commande>
 ```
 
 ## 📜 Commandes disponibles
