@@ -1,9 +1,9 @@
-# Référence — Wrapping des Composants Shadcn
+# Reference — Wrapping Shadcn Components
 
-**Règle absolue : ne jamais modifier `/components/ui/`. Toujours wrapper.**
+**Absolute rule: never modify /components/ui/. Always wrap.**
 
-Lorsque l'utilisateur fournit une commande `npx shadcn@latest add X`, créer immédiatement
-le wrapper correspondant dans `/components/primitives/`.
+When the user provides a `npx shadcn@latest add X` command, immediately create
+the corresponding wrapper in `/components/primitives/`.
 
 ---
 
@@ -16,7 +16,7 @@ import { cn } from "@/lib/utils"
 import { type VariantProps } from "class-variance-authority"
 
 interface AppButtonProps extends React.ComponentProps<typeof Button> {
-  // Variantes additionnelles de marque
+  // Additional brand variants
   size?: "sm" | "md" | "lg" | "xl"
 }
 
@@ -24,11 +24,11 @@ export function AppButton({ className, size = "md", ...props }: AppButtonProps) 
   return (
     <Button
       className={cn(
-        // Reset Shadcn defaults → tokens marque
+        // Reset Shadcn defaults → brand tokens
         "font-medium tracking-wide transition-all duration-150",
-        // Pas de box-shadow, pas de glow — focus visible clean
+        // No box-shadow, no glow — clean visible focus
         "focus-visible:ring-2 focus-visible:ring-[oklch(var(--ring))] focus-visible:ring-offset-2",
-        // Hover : pas de scale — légère translation
+        // Hover: no scale — slight translation
         "hover:-translate-y-px active:translate-y-0",
         size === "xl" && "h-12 px-8 text-base",
         className
@@ -64,16 +64,16 @@ export function AppCard({
     <Card
       className={cn(
         "relative overflow-hidden rounded-xl",
-        // Suppression shadow Shadcn par défaut
+        // Removing default Shadcn shadow
         "shadow-none",
-        // Variantes — élévation par contraste colorimétrique, pas par ombre
+        // Variants — elevation via color contrast, not shadow
         variant === "default"  && "border border-[oklch(var(--border))] bg-[oklch(var(--card))]",
         variant === "elevated" && "border border-[oklch(var(--border-strong,var(--border)))] bg-[oklch(var(--card-elevated,var(--card)))]",
         variant === "ghost"    && "border-transparent bg-transparent",
         variant === "outlined" && "border-2 border-[oklch(var(--primary))] bg-transparent",
-        // Interactivité — pas de zoom, révélation par border
+        // Interactivity — no zoom, reveal via border
         interactive && "cursor-pointer transition-colors duration-150 hover:border-[oklch(var(--accent))]",
-        // Grain premium optionnel
+        // Optional premium grain
         grain && "after:absolute after:inset-0 after:pointer-events-none after:bg-noise after:opacity-[0.04] after:mix-blend-overlay",
         className
       )}
@@ -84,7 +84,7 @@ export function AppCard({
   )
 }
 
-// Re-exporter les sous-composants pour usage fluide
+// Re-export sub-components for fluid usage
 export { CardContent, CardHeader, CardTitle, CardDescription }
 ```
 
@@ -165,7 +165,7 @@ export function AppBadge({ status = "default", dot = false, className, children,
     <Badge
       className={cn(
         "inline-flex items-center gap-1.5 border font-medium",
-        "shadow-none",  // Supprime l'ombre Shadcn par défaut
+        "shadow-none",  // Removing default Shadcn shadow
         statusStyles[status],
         className
       )}
@@ -208,7 +208,7 @@ export function AppDialog({ open, onOpenChange, title, description, size = "md",
       <DialogContent className={cn(
         sizeMap[size],
         "rounded-2xl border border-[oklch(var(--border))] bg-[oklch(var(--card))]",
-        "shadow-none",  // Pas de shadow massive — le backdrop assure la profondeur
+        "shadow-none",  // No massive shadow — the backdrop handles depth
       )}>
         <DialogHeader>
           <DialogTitle className="text-[oklch(var(--foreground))]">{title}</DialogTitle>
@@ -243,7 +243,7 @@ interface AppSelectProps {
   className?: string
 }
 
-export function AppSelect({ options, placeholder = "Sélectionner...", className, ...props }: AppSelectProps) {
+export function AppSelect({ options, placeholder = "Select...", className, ...props }: AppSelectProps) {
   return (
     <Select {...props}>
       <SelectTrigger className={cn(
@@ -321,7 +321,7 @@ export function AppTable<T extends Record<string, unknown>>({
               className={cn(
                 "border-[oklch(var(--border))] transition-colors",
                 striped && i % 2 === 0 && "bg-[oklch(var(--muted)/0.4)]",
-                "hover:bg-[oklch(var(--accent)/0.05)]"  // Hover subtil, pas de surbrillance agressive
+                "hover:bg-[oklch(var(--accent)/0.05)]"  // Subtle hover, no aggressive highlight
               )}
             >
               {columns.map(col => (
@@ -343,18 +343,18 @@ export function AppTable<T extends Record<string, unknown>>({
 
 ---
 
-## Pattern de Blocks Métier
+## Business Block Pattern
 
-Après les primitives, composer des blocks métier dans `/components/blocks/` :
+After primitives, compose business blocks in `/components/blocks/`:
 
 ```
 blocks/
-├── HeroSection.tsx          ← Hero landing (pas de gradient plein écran !)
-├── PricingCard.tsx          ← Carte de tarification
-├── FeatureGrid.tsx          ← Grille de fonctionnalités asymétrique
-├── TestimonialCarousel.tsx  ← Témoignages
-├── StatsBanner.tsx          ← Bande de chiffres clés
-└── NavBar.tsx               ← Navigation (pas de blur-backdrop générique !)
+├── HeroSection.tsx          ← Landing hero (no full-screen gradient!)
+├── PricingCard.tsx          ← Pricing card
+├── FeatureGrid.tsx          ← Asymmetric feature grid
+├── TestimonialCarousel.tsx  ← Testimonials
+├── StatsBanner.tsx          ← Key metrics banner
+└── NavBar.tsx               ← Navigation (no generic blur-backdrop!)
 ```
 
-Chaque block importe **uniquement depuis `/primitives/`**, jamais depuis `/ui/` directement.
+Each block imports **only from `/primitives/`**, never from `/ui/` directly.

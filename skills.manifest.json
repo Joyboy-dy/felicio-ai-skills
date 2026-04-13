@@ -3,83 +3,83 @@
     {
       "name": "frontend-aesthetics",
       "description": "Design system patterns and aesthetics for modern frontend",
-      "files": ["felicio-ai-toolkit/frontend-aesthetics/SKILL.md"]
+      "files": ["skills/felicio-ai-toolkit/frontend-aesthetics/SKILL.md"]
     },
     {
       "name": "nextjs-architecture-pattern",
       "description": "Best practices and folder structure for Next.js projects",
-      "files": ["felicio-ai-toolkit/nextjs-architecture-pattern/SKILL.md"]
+      "files": ["skills/felicio-ai-toolkit/nextjs-architecture-pattern/SKILL.md"]
     },
     {
       "name": "ui-moderne-2026",
       "description": "Modern UI components and references for 2026",
       "files": [
-        "felicio-ai-toolkit/ui-moderne-2026/SKILL.md",
-        "felicio-ai-toolkit/ui-moderne-2026/references/effects-catalog.md",
-        "felicio-ai-toolkit/ui-moderne-2026/references/oklch.md",
-        "felicio-ai-toolkit/ui-moderne-2026/references/shadcn-components.md"
+        "skills/felicio-ai-toolkit/ui-moderne-2026/SKILL.md",
+        "skills/felicio-ai-toolkit/ui-moderne-2026/references/effects-catalog.md",
+        "skills/felicio-ai-toolkit/ui-moderne-2026/references/oklch.md",
+        "skills/felicio-ai-toolkit/ui-moderne-2026/references/shadcn-components.md"
       ]
     },
     {
       "name": "ux-ui-audit",
       "description": "Comprehensive UX/UI audit checklist and patterns",
-      "files": ["felicio-ai-toolkit/ux-ui-audit/SKILL.md"]
+      "files": ["skills/felicio-ai-toolkit/ux-ui-audit/SKILL.md"]
     },
     {
       "name": "accessibility-compliance",
       "description": "Skills for building accessible and WCAG compliant interfaces",
       "files": [
-        "from-skills.sh/accessibility-compliance/SKILL.md",
-        "from-skills.sh/accessibility-compliance/references/aria-patterns.md",
-        "from-skills.sh/accessibility-compliance/references/mobile-accessibility.md",
-        "from-skills.sh/accessibility-compliance/references/wcag-guidelines.md"
+        "skills/from-skills.sh/accessibility-compliance/SKILL.md",
+        "skills/from-skills.sh/accessibility-compliance/references/aria-patterns.md",
+        "skills/from-skills.sh/accessibility-compliance/references/mobile-accessibility.md",
+        "skills/from-skills.sh/accessibility-compliance/references/wcag-guidelines.md"
       ]
     },
     {
       "name": "code-review-excellence",
       "description": "Guidelines and checklists for professional PR reviews",
-      "files": ["from-skills.sh/code-review-excellence/SKILL.md"]
+      "files": ["skills/from-skills.sh/code-review-excellence/SKILL.md"]
     },
     {
       "name": "codebase-cleanup-refactor-clean",
       "description": "Strategies for refactoring and maintaining clean codebases",
       "files": [
-        "from-skills.sh/codebase-cleanup-refactor-clean/SKILL.md",
-        "from-skills.sh/codebase-cleanup-refactor-clean/resources/implementation-playbook.md"
+        "skills/from-skills.sh/codebase-cleanup-refactor-clean/SKILL.md",
+        "skills/from-skills.sh/codebase-cleanup-refactor-clean/resources/implementation-playbook.md"
       ]
     },
     {
       "name": "design-system-patterns",
       "description": "Building and maintaining modular design systems",
       "files": [
-        "from-skills.sh/design-system-patterns/SKILL.md",
-        "from-skills.sh/design-system-patterns/references/component-architecture.md",
-        "from-skills.sh/design-system-patterns/references/design-tokens.md",
-        "from-skills.sh/design-system-patterns/references/theming-architecture.md"
+        "skills/from-skills.sh/design-system-patterns/SKILL.md",
+        "skills/from-skills.sh/design-system-patterns/references/component-architecture.md",
+        "skills/from-skills.sh/design-system-patterns/references/design-tokens.md",
+        "skills/from-skills.sh/design-system-patterns/references/theming-architecture.md"
       ]
     },
     {
       "name": "responsive-design",
       "description": "Principles and techniques for truly responsive web apps",
       "files": [
-        "from-skills.sh/responsive-design/SKILL.md",
-        "from-skills.sh/responsive-design/references/breakpoint-strategies.md",
-        "from-skills.sh/responsive-design/references/container-queries.md",
-        "from-skills.sh/responsive-design/references/fluid-layouts.md"
+        "skills/from-skills.sh/responsive-design/SKILL.md",
+        "skills/from-skills.sh/responsive-design/references/breakpoint-strategies.md",
+        "skills/from-skills.sh/responsive-design/references/container-queries.md",
+        "skills/from-skills.sh/responsive-design/references/fluid-layouts.md"
       ]
     },
     {
       "name": "tailwind-design-system",
       "description": "Advanced Tailwind CSS patterns and best practices",
-      "files": ["from-skills.sh/tailwind-design-system/SKILL.md"]
+      "files": ["skills/from-skills.sh/tailwind-design-system/SKILL.md"]
     },
     {
       "name": "ui-ux-pro-max",
       "description": "The ultimate guide for premium UI/UX design and dev",
       "files": [
-        "from-skills.sh/ui-ux-pro-max/SKILL.md",
-        "from-skills.sh/ui-ux-pro-max/data",
-        "from-skills.sh/ui-ux-pro-max/scripts"
+        "skills/from-skills.sh/ui-ux-pro-max/SKILL.md",
+        "skills/from-skills.sh/ui-ux-pro-max/data",
+        "skills/from-skills.sh/ui-ux-pro-max/scripts"
       ]
     }
   ]

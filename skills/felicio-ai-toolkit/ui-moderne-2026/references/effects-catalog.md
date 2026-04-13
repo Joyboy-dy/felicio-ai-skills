@@ -1,12 +1,12 @@
-# Catalogue d'Effets Originaux — Alternatives aux Patterns Génériques
+# Original Effects Catalog — Alternatives to Generic Patterns
 
-Ce catalogue fournit des effets prêts à l'emploi, organisés par ce qu'ils **remplacent**.
+This catalog provides ready-to-use effects, organized by what they **replace**.
 
 ---
 
-## Remplacement du Zoom Hover
+## Hover Zoom Replacement
 
-### 1. Reveal de sous-contenu (le plus mémorable)
+### 1. Sub-content Reveal (the most memorable)
 ```css
 .card { position: relative; overflow: hidden; }
 .card__hidden {
@@ -19,7 +19,7 @@ Ce catalogue fournit des effets prêts à l'emploi, organisés par ce qu'ils **r
 .card:hover .card__hidden { transform: translateY(0); }
 ```
 
-### 2. Morphing de bordure
+### 2. Border Morphing
 ```css
 .card {
   border: 1px solid oklch(var(--border));
@@ -32,7 +32,7 @@ Ce catalogue fournit des effets prêts à l'emploi, organisés par ce qu'ils **r
 }
 ```
 
-### 3. Glissement de label (effet ticker)
+### 3. Label Slide (ticker effect)
 ```css
 .btn { overflow: hidden; position: relative; }
 .btn__text { display: block; transition: transform 200ms ease; }
@@ -44,7 +44,7 @@ Ce catalogue fournit des effets prêts à l'emploi, organisés par ce qu'ils **r
 .btn:hover .btn__text-clone { transform: translateY(-100%); }
 ```
 
-### 4. Ligne de focus progressive (liens et items de nav)
+### 4. Progressive Focus Line (links and nav items)
 ```css
 .nav-link { position: relative; }
 .nav-link::after {
@@ -60,21 +60,21 @@ Ce catalogue fournit des effets prêts à l'emploi, organisés par ce qu'ils **r
 
 ---
 
-## Remplacement des Box-Shadow Lourdes
+## Heavy Box-Shadow Replacement
 
-### 1. Élévation par contraste OKLCH (recommandé)
+### 1. Elevation via OKLCH Contrast (recommended)
 ```css
-/* Surface "élevée" = L légèrement plus haute que la surface parent */
+/* "Elevated" surface = L slightly higher than parent surface */
 .card-base     { background: oklch(0.96 0.008 240); }
 .card-elevated { background: oklch(0.99 0.004 240); } /* +3% L */
-/* En dark mode : surface élevée = L plus haute aussi */
+/* In dark mode: elevated surface = L higher as well */
 .dark .card-base     { background: oklch(0.16 0.015 240); }
 .dark .card-elevated { background: oklch(0.22 0.018 240); } /* +6% L */
 ```
 
-### 2. Border asymétrique directionnelle
+### 2. Directional Asymmetric Border
 ```css
-/* Simule une source de lumière venant du haut-gauche */
+/* Simulates a light source coming from top-left */
 .surface {
   border-top: 1px solid oklch(var(--border-light, oklch(0.95 0.01 240)));
   border-left: 1px solid oklch(var(--border-light, oklch(0.95 0.01 240)));
@@ -83,9 +83,9 @@ Ce catalogue fournit des effets prêts à l'emploi, organisés par ce qu'ils **r
 }
 ```
 
-### 3. Ombre ultra-fine (quand une ombre est vraiment nécessaire)
+### 3. Ultra-fine Shadow (when a shadow is genuinely necessary)
 ```css
-/* Maximum autorisé — jamais plus que ça */
+/* Maximum allowed — never more than this */
 .shadow-fine {
   box-shadow:
     0 1px 2px oklch(0 0 0 / 0.06),
@@ -95,15 +95,15 @@ Ce catalogue fournit des effets prêts à l'emploi, organisés par ce qu'ils **r
 
 ---
 
-## Remplacement des Dégradés Spotlight et Glows
+## Spotlight Gradient and Glow Replacement
 
-### 1. Zone de focus par variation L (subtil, premium)
+### 1. Focus Zone via L variation (subtle, premium)
 ```css
 .hero-background {
   background: oklch(0.12 0.015 240);
 }
 .hero-focus-zone {
-  /* Pas de radial-gradient saturé — juste +4% L au centre */
+  /* No saturated radial-gradient — just +4% L at center */
   background: radial-gradient(
     ellipse 60% 40% at 50% 30%,
     oklch(0.18 0.018 240) 0%,
@@ -112,7 +112,7 @@ Ce catalogue fournit des effets prêts à l'emploi, organisés par ce qu'ils **r
 }
 ```
 
-### 2. Ligne lumineuse directionnelle (effet laser horizontal)
+### 2. Directional Light Line (horizontal laser effect)
 ```css
 .section-divider {
   height: 1px;
@@ -126,16 +126,16 @@ Ce catalogue fournit des effets prêts à l'emploi, organisés par ce qu'ils **r
 }
 ```
 
-### 3. Halo de bord (sur les cards premium, mode dark uniquement)
+### 3. Edge Halo (on premium cards, dark mode only)
 ```css
 .dark .card-premium {
-  box-shadow: inset 0 1px 0 oklch(1 0 0 / 0.06); /* Reflet haut subtil */
+  box-shadow: inset 0 1px 0 oklch(1 0 0 / 0.06); /* Subtle top reflection */
 }
 ```
 
-### 4. Texture de bruit comme alternative au gradient
+### 4. Noise Texture as Gradient Alternative
 ```css
-/* Ajouter de la profondeur sans couleur saturée */
+/* Add depth without saturated color */
 .surface-depth {
   background:
     url("data:image/svg+xml,%3Csvg...%3E") repeat,  /* grain SVG */
@@ -146,9 +146,9 @@ Ce catalogue fournit des effets prêts à l'emploi, organisés par ce qu'ils **r
 
 ---
 
-## Animations Narratives (alternatives au parallaxe)
+## Narrative Animations (alternatives to parallax)
 
-### 1. Reveal au scroll — CSS natif (aucun JS)
+### 1. Scroll Reveal — Native CSS (no JS)
 ```css
 @keyframes fade-up {
   from { opacity: 0; translate: 0 16px; }
@@ -161,12 +161,12 @@ Ce catalogue fournit des effets prêts à l'emploi, organisés par ce qu'ils **r
   animation-range: entry 0% entry 25%;
 }
 
-/* Stagger : délai croissant pour les éléments frères */
+/* Stagger: increasing delay for sibling elements */
 .reveal:nth-child(2) { animation-delay: 60ms; }
 .reveal:nth-child(3) { animation-delay: 120ms; }
 ```
 
-### 2. Compteur animé (données clés)
+### 2. Animated Counter (key data)
 ```ts
 // hooks/useCountUp.ts
 export function useCountUp(target: number, duration = 1200) {
@@ -194,7 +194,7 @@ export function useCountUp(target: number, duration = 1200) {
 }
 ```
 
-### 3. Texte qui se dévoile (masking)
+### 3. Reveal Text (masking)
 ```css
 @keyframes reveal-text {
   from { clip-path: inset(0 100% 0 0); }
@@ -208,9 +208,9 @@ export function useCountUp(target: number, duration = 1200) {
 }
 ```
 
-### 4. Morphing de forme SVG
+### 4. SVG Shape Morphing
 ```tsx
-// Transition entre deux paths SVG au hover — identité visuelle forte
+// Transition between two SVG paths on hover — strong visual identity
 function MorphIcon() {
   return (
     <svg viewBox="0 0 24 24" className="w-6 h-6">
@@ -226,9 +226,9 @@ function MorphIcon() {
 
 ---
 
-## Micro-interactions Émotionnelles
+## Emotional Micro-interactions
 
-### Bouton qui "respire" au succès
+### Success-pulse Button
 ```css
 @keyframes success-pulse {
   0%   { box-shadow: 0 0 0 0 oklch(var(--primary) / 0.4); }
@@ -239,7 +239,7 @@ function MorphIcon() {
 .btn--success { animation: success-pulse 600ms ease-out; }
 ```
 
-### Input qui signale l'erreur (sans rouge agressif)
+### Error-signal Input (no aggressive red)
 ```css
 @keyframes shake-subtle {
   0%, 100% { translate: 0; }
@@ -249,7 +249,7 @@ function MorphIcon() {
 .input--error { animation: shake-subtle 300ms ease; }
 ```
 
-### Checkbox avec path animé
+### Checkbox with Animated Path
 ```css
 .checkbox-check {
   stroke-dasharray: 20;
@@ -263,24 +263,24 @@ function MorphIcon() {
 
 ---
 
-## Typographies Variables Recommandées
+## Recommended Variable Typography
 
-| Famille | Style | Axes disponibles | Cas d'usage |
+| Family | Style | Available Axes | Use Case |
 |---------|-------|-----------------|-------------|
-| Fraunces | Serif organique | `SOFT`, `WONK`, `opsz`, `wght` | Landings premium, édito |
-| Recursive | Mono/Sans hybride | `MONO`, `CASL`, `CRSV`, `slnt` | Dev tools, interfaces techniques |
-| Raleway | Géométrique | `wght` | SaaS propre, moderne |
-| Cabinet Grotesk | Grotesque | `wght` | Startups tech |
-| Libre Baskerville | Serif classique | — | Contenu long, confiance |
+| Fraunces | Organic Serif | `SOFT`, `WONK`, `opsz`, `wght` | Premium landings, editorial |
+| Recursive | Mono/Sans hybrid | `MONO`, `CASL`, `CRSV`, `slnt` | Dev tools, technical interfaces |
+| Raleway | Geometric | `wght` | Clean, modern SaaS |
+| Cabinet Grotesk | Grotesque | `wght` | Tech startups |
+| Libre Baskerville | Classic Serif | — | Long-form content, trust |
 
-**Chargement optimisé :**
+**Optimized Loading:**
 ```html
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preload" as="font" crossorigin>
 ```
 
 ```css
-/* Font variable — activer les axes dans CSS */
+/* Variable Font — enable axes in CSS */
 body {
   font-family: 'Fraunces', serif;
   font-variation-settings: 'SOFT' 50;
@@ -290,9 +290,9 @@ body {
 
 ---
 
-## prefers-reduced-motion — Template universel
+## prefers-reduced-motion — Universal Template
 
-Toujours inclure ce bloc dans `globals.css` :
+Always include this block in `globals.css`:
 
 ```css
 @media (prefers-reduced-motion: reduce) {
@@ -303,7 +303,7 @@ Toujours inclure ce bloc dans `globals.css` :
     scroll-behavior: auto !important;
   }
   
-  /* Conserver les transitions fonctionnelles (focus, états) */
+  /* Retain functional transitions (focus, states) */
   :focus-visible {
     transition: outline-offset 0ms !important;
   }

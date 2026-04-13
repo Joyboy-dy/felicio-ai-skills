@@ -37,8 +37,8 @@ async function downloadFile(relativeRepoPath) {
   
   // Supprimer les dossiers parents pour l'installation locale
   let relativePath = relativeRepoPath
-    .replace('felicio-ai-toolkit/', '')
-    .replace('from-skills.sh/', '');
+    .replace('skills/felicio-ai-toolkit/', '')
+    .replace('skills/from-skills.sh/', '');
   
   const destPath = path.join(process.cwd(), '.claude', 'skills', relativePath);
 

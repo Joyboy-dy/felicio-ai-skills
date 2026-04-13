@@ -1,43 +1,43 @@
 # Felicio AI Skills Toolkit 🚀
 
-Un écosystème complet pour distribuer et installer des skills Claude Code via NPX et GitHub Packages.
+A complete ecosystem for distributing and installing Claude Code skills via NPX and GitHub Packages.
 
 ## 🛠 Installation
 
-Vous pouvez utiliser ce toolkit directement via NPX sans installation préalable dans n'importe quel projet :
+You can use this toolkit directly via NPX without prior installation in any project:
 
 ```bash
-npx @joyboy-dy/felicio-ai-skills <commande>
+npx @joyboy-dy/felicio-ai-skills <command>
 ```
 
-## 📜 Commandes disponibles
+## 📜 Available Commands
 
-| Commande | Description |
+| Command | Description |
 | :--- | :--- |
-| `init` | Installe **tous** les skills disponibles dans `.claude/skills/` |
-| `list` | Affiche la liste de tous les skills disponibles |
-| `add <skill-name>` | Installe un skill spécifique par son nom |
+| `init` | Installs **all** available skills into `.claude/skills/` |
+| `list` | Displays the list of all available skills |
+| `add <skill-name>` | Installs a specific skill by its name |
 
-## 🌟 Skills inclus
+## 🌟 Included Skills
 
 ### Felicio AI Toolkit
-- **frontend-aesthetics**: Design system patterns et esthétique moderne.
-- **nextjs-architecture-pattern**: Meilleures pratiques et structure Next.js.
-- **ui-moderne-2026**: Composants UI et références pour 2026.
-- **ux-ui-audit**: Checklist d'audit UX/UI complète.
+- **frontend-aesthetics**: Design system patterns and modern aesthetics.
+- **nextjs-architecture-pattern**: Next.js best practices and architecture patterns.
+- **ui-modern-2026**: Premium UI components and design references for 2026.
+- **ux-ui-audit**: Comprehensive UX/UI audit checklist.
 
-### From Skills
-- **accessibility-compliance**: Accessibilité et conformité WCAG.
-- **code-review-excellence**: Guide pour des revues de code professionnelles.
-- **codebase-cleanup-refactor-clean**: Stratégies de refactoring.
-- **design-system-patterns**: Architecture de design system modulaire.
-- **responsive-design**: Principes du design adaptatif moderne.
-- **tailwind-design-system**: Patterns avancés Tailwind CSS.
-- **ui-ux-pro-max**: Le guide ultime pour le design premium.
+### Core Skills
+- **accessibility-compliance**: Web accessibility and WCAG compliance guide.
+- **code-review-excellence**: Professional code review guidelines.
+- **codebase-cleanup-refactor-clean**: Refactoring and cleanup strategies.
+- **design-system-patterns**: Modular design system architecture.
+- **responsive-design**: Modern adaptive design principles.
+- **tailwind-design-system**: Advanced Tailwind CSS patterns and configurations.
+- **ui-ux-pro-max**: The ultimate guide for premium interface design.
 
-## 🚀 Publication (GitHub Packages)
+## 🚀 Publishing (GitHub Packages)
 
-Le package est automatiquement publié sur GitHub Packages via GitHub Actions à chaque push sur la branche `main`.
+The package is automatically published to GitHub Packages via GitHub Actions upon every push to the `main` branch.
 
 ---
-*Maintenu par [Joyboy-dy](https://github.com/Joyboy-dy)*
+*Maintained by [Joyboy-dy](https://github.com/Joyboy-dy)*
