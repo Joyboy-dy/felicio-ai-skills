@@ -62,7 +62,7 @@ async function downloadFile(relativeRepoPath, targetBaseDir) {
 program
   .name('felicio-ai-skills')
   .description('CLI pour installer les skills Felicio AI')
-  .version('1.2.0');
+  .version('1.3.0');
 
 program
   .command('list')
@@ -109,10 +109,30 @@ program
   });
 
 program
-  .command('add <skill-name>')
-  .description('Installe un skill spécifique localement')
-  .action(async (skillName) => {
+  .command('add [skill-name]')
+  .description('Installe un skill spécifique ou tous les skills (--all) localement')
+  .option('-a, --all', 'Installe tous les skills disponibles')
+  .action(async (skillName, options) => {
     const manifest = await fetchManifest();
+    const targetDir = path.join(process.cwd(), '.agents', 'skills');
+
+    if (options.all) {
+      console.log(chalk.cyan.bold(`\nInstallation de TOUS les skills disponibles...\n`));
+      for (const skill of manifest.skills) {
+        for (const file of skill.files) {
+          await downloadFile(file, targetDir);
+        }
+      }
+      console.log(chalk.green.bold(`\n✨ Tous les skills ont été installés localement avec succès !\n`));
+      return;
+    }
+
+    if (!skillName) {
+      console.error(chalk.red(`\nErreur: Nom de skill manquant.`));
+      console.log('Utilisez ' + chalk.yellow('add <nom>') + ' ou ' + chalk.yellow('add --all') + '.\n');
+      return;
+    }
+
     const skill = manifest.skills.find(s => s.name === skillName);
     
     if (!skill) {
@@ -121,7 +141,6 @@ program
       return;
     }
 
-    const targetDir = path.join(process.cwd(), '.agents', 'skills');
     console.log(chalk.cyan.bold(`\nInstallation du skill: ${skillName}...\n`));
     for (const file of skill.files) {
       await downloadFile(file, targetDir);
