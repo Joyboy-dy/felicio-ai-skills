@@ -81,6 +81,14 @@
         "skills/from-skills.sh/ui-ux-pro-max/data",
         "skills/from-skills.sh/ui-ux-pro-max/scripts"
       ]
+    },
+    {
+      "name": "supabase-postgres-best-practices",
+      "description": "Expert guidelines for Postgres performance and security in Supabase",
+      "files": [
+        "skills/from-app-recommendations/supabase-postgres-best-practices/SKILL.md",
+        "skills/from-app-recommendations/supabase-postgres-best-practices/references"
+      ]
     }
   ]
 }

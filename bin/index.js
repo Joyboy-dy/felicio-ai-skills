@@ -41,7 +41,8 @@ async function downloadFile(relativeRepoPath, targetBaseDir) {
   // Nettoyer le chemin pour l'installation
   let relativePath = relativeRepoPath
     .replace('skills/felicio-ai-toolkit/', '')
-    .replace('skills/from-skills.sh/', '');
+    .replace('skills/from-skills.sh/', '')
+    .replace('skills/from-app-recommendations/', '');
   
   const destPath = path.join(targetBaseDir, relativePath);
 
@@ -61,7 +62,7 @@ async function downloadFile(relativeRepoPath, targetBaseDir) {
 program
   .name('felicio-ai-skills')
   .description('CLI pour installer les skills Felicio AI')
-  .version('1.1.0');
+  .version('1.2.0');
 
 program
   .command('list')
@@ -80,7 +81,7 @@ program
   .description('Installe les skills localement ou globalement')
   .option('-g, --global', 'Installe les skills globalement dans ~/.felicio-ai-skills/')
   .action(async (options) => {
-    const targetDir = options.global ? GLOBAL_DIR : path.join(process.cwd(), '.claude', 'skills');
+    const targetDir = options.global ? GLOBAL_DIR : path.join(process.cwd(), '.agents', 'skills');
     
     if (options.global && await fs.exists(GLOBAL_DIR)) {
       const answer = await askQuestion(chalk.yellow(`~/.felicio-ai-skills already exists. Update? (y/n): `));
@@ -120,7 +121,7 @@ program
       return;
     }
 
-    const targetDir = path.join(process.cwd(), '.claude', 'skills');
+    const targetDir = path.join(process.cwd(), '.agents', 'skills');
     console.log(chalk.cyan.bold(`\nInstallation du skill: ${skillName}...\n`));
     for (const file of skill.files) {
       await downloadFile(file, targetDir);
@@ -131,7 +132,7 @@ program
 program
   .command('link')
   .description('Lien symbolique des skills globaux vers le projet courant')
-  .option('-d, --dir <directory>', 'Dossier de destination (défaut: .claude/skills)', '.claude/skills')
+  .option('-d, --dir <directory>', 'Dossier de destination (défaut: .agents/skills)', '.agents/skills')
   .action(async (options) => {
     if (!(await fs.exists(GLOBAL_DIR))) {
       console.log(chalk.red('No global skills found. Run "init --global" first.'));
@@ -159,7 +160,7 @@ program
 program
   .command('unlink')
   .description('Supprime le lien symbolique du projet courant')
-  .option('-d, --dir <directory>', 'Dossier du lien (défaut: .claude/skills)', '.claude/skills')
+  .option('-d, --dir <directory>', 'Dossier du lien (défaut: .agents/skills)', '.agents/skills')
   .action(async (options) => {
     const targetDir = path.resolve(process.cwd(), options.dir);
 

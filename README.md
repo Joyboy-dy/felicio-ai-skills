@@ -10,17 +10,17 @@ Install once on your machine and share across all projects:
 # 1. Install global storage
 npx @joyboy-dy/felicio-ai-skills init --global
 
-# 2. Link to any project (default to .claude/skills)
+# 2. Link to any project (default to .agents/skills)
 npx @joyboy-dy/felicio-ai-skills link
 ```
 
-*Note: You can specify a custom directory with `link --dir .agents/skills`.*
+*Note: You can specify a custom directory with `link --dir .other-agent/skills`.*
 
 ## 📜 Available Commands
 
 | Command | Description |
 | :--- | :--- |
-| `init` | Installs skills locally in `.claude/skills/` |
+| `init` | Installs skills locally in `.agents/skills/` |
 | `init --global` | Installs skills globally in `~/.felicio-ai-skills/` |
 | `link` | Links global skills to current project |
 | `link --dir <path>` | Links global skills to a specific directory |
@@ -37,6 +37,7 @@ npx @joyboy-dy/felicio-ai-skills link
 - **ux-ui-audit**: Comprehensive UX/UI audit checklist.
 
 ### Core Skills
+- **supabase-postgres-best-practices**: Expert guidelines for Postgres performance and security in Supabase.
 - **accessibility-compliance**: Web accessibility and WCAG compliance guide.
 - **code-review-excellence**: Professional code review guidelines.
 - **codebase-cleanup-refactor-clean**: Refactoring and cleanup strategies.
