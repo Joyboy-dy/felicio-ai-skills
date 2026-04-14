@@ -5,10 +5,24 @@ const chalk = require('chalk');
 const fs = require('fs-extra');
 const path = require('path');
 const fetch = require('node-fetch');
+const os = require('os');
+const readline = require('readline');
 
 const program = new Command();
 const GITHUB_RAW_BASE = 'https://raw.githubusercontent.com/Joyboy-dy/felicio-ai-skills/main/';
 const MANIFEST_URL = `${GITHUB_RAW_BASE}skills.manifest.json`;
+const GLOBAL_DIR = path.join(os.homedir(), '.felicio-ai-skills');
+
+async function askQuestion(query) {
+  const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout,
+  });
+  return new Promise(resolve => rl.question(query, ans => {
+    rl.close();
+    resolve(ans);
+  }));
+}
 
 async function fetchManifest() {
   try {
@@ -21,26 +35,15 @@ async function fetchManifest() {
   }
 }
 
-async function downloadFile(relativeRepoPath) {
+async function downloadFile(relativeRepoPath, targetBaseDir) {
   const url = `${GITHUB_RAW_BASE}${relativeRepoPath}`;
-  const localPath = path.join(process.cwd(), '.claude', 'skills', relativeRepoPath.split('/').pop());
   
-  // Custom logic: user wants files in .claude/skills/
-  // But some skills have references/ subfolders. 
-  // Should we preserve structure or flatten? 
-  // Usually skills in Claude are flattened in .claude/skills/ but referenced by relative paths if needed.
-  // Re-reading user request: "installe tous les skills dans .claude/skills/ du projet courant"
-  
-  // Let's preserve the skill's file name but if there are subfolders, maybe flatten them for simplicity in .claude/skills/ 
-  // unless SKILL.md expects them in subfolders.
-  // Let's create subfolders if needed to be safe.
-  
-  // Supprimer les dossiers parents pour l'installation locale
+  // Nettoyer le chemin pour l'installation
   let relativePath = relativeRepoPath
     .replace('skills/felicio-ai-toolkit/', '')
     .replace('skills/from-skills.sh/', '');
   
-  const destPath = path.join(process.cwd(), '.claude', 'skills', relativePath);
+  const destPath = path.join(targetBaseDir, relativePath);
 
   try {
     const response = await fetch(url);
@@ -49,7 +52,7 @@ async function downloadFile(relativeRepoPath) {
     const content = await response.text();
     await fs.ensureDir(path.dirname(destPath));
     await fs.writeFile(destPath, content);
-    console.log(`${chalk.green('✔')} Installé: ${destPath.replace(process.cwd() + path.sep, '')}`);
+    console.log(`${chalk.green('✔')} Installé: ${path.relative(process.cwd(), destPath) || destPath}`);
   } catch (error) {
     console.error(chalk.red('✘ Error downloading'), relativeRepoPath, ':', error.message);
   }
@@ -58,7 +61,7 @@ async function downloadFile(relativeRepoPath) {
 program
   .name('felicio-ai-skills')
   .description('CLI pour installer les skills Felicio AI')
-  .version('1.0.0');
+  .version('1.1.0');
 
 program
   .command('list')
@@ -74,22 +77,39 @@ program
 
 program
   .command('init')
-  .description('Installe tous les skills dans .claude/skills/')
-  .action(async () => {
+  .description('Installe les skills localement ou globalement')
+  .option('-g, --global', 'Installe les skills globalement dans ~/.felicio-ai-skills/')
+  .action(async (options) => {
+    const targetDir = options.global ? GLOBAL_DIR : path.join(process.cwd(), '.claude', 'skills');
+    
+    if (options.global && await fs.exists(GLOBAL_DIR)) {
+      const answer = await askQuestion(chalk.yellow(`~/.felicio-ai-skills already exists. Update? (y/n): `));
+      if (answer.toLowerCase() !== 'y') {
+        console.log(chalk.blue('Operation cancelled.'));
+        return;
+      }
+    }
+
     const manifest = await fetchManifest();
-    console.log(chalk.cyan.bold('\nInitialisation des skills...\n'));
+    console.log(chalk.cyan.bold(`\nInitialisation des skills ${options.global ? 'globalement' : 'localement'}...\n`));
     
     for (const skill of manifest.skills) {
       for (const file of skill.files) {
-        await downloadFile(file);
+        await downloadFile(file, targetDir);
       }
     }
-    console.log(chalk.green.bold('\n✨ Tous les skills ont été installés avec succès !\n'));
+
+    if (options.global) {
+      console.log(chalk.green.bold('\n✓ Skills installed globally in ~/.felicio-ai-skills/'));
+      console.log(chalk.blue('→ Run "npx @joyboy-dy/felicio-ai-skills link" in any project to use them.\n'));
+    } else {
+      console.log(chalk.green.bold('\n✨ Tous les skills ont été installés localement avec succès !\n'));
+    }
   });
 
 program
   .command('add <skill-name>')
-  .description('Installe un skill spécifique')
+  .description('Installe un skill spécifique localement')
   .action(async (skillName) => {
     const manifest = await fetchManifest();
     const skill = manifest.skills.find(s => s.name === skillName);
@@ -100,11 +120,65 @@ program
       return;
     }
 
+    const targetDir = path.join(process.cwd(), '.claude', 'skills');
     console.log(chalk.cyan.bold(`\nInstallation du skill: ${skillName}...\n`));
     for (const file of skill.files) {
-      await downloadFile(file);
+      await downloadFile(file, targetDir);
     }
     console.log(chalk.green.bold(`\n✨ Skill "${skillName}" installé avec succès !\n`));
+  });
+
+program
+  .command('link')
+  .description('Lien symbolique des skills globaux vers le projet courant')
+  .option('-d, --dir <directory>', 'Dossier de destination (défaut: .claude/skills)', '.claude/skills')
+  .action(async (options) => {
+    if (!(await fs.exists(GLOBAL_DIR))) {
+      console.log(chalk.red('No global skills found. Run "init --global" first.'));
+      return;
+    }
+
+    const targetDir = path.resolve(process.cwd(), options.dir);
+
+    if (await fs.exists(targetDir)) {
+      console.log(chalk.yellow('Already linked or directory exists.'));
+      return;
+    }
+
+    try {
+      await fs.ensureDir(path.dirname(targetDir));
+      // Utiliser 'junction' sur Windows pour les dossiers, 'dir' ou 'file' ailleurs
+      const type = os.platform() === 'win32' ? 'junction' : 'dir';
+      await fs.symlink(GLOBAL_DIR, targetDir, type);
+      console.log(chalk.green.bold(`\n✓ Linked ${GLOBAL_DIR} → ${path.relative(process.cwd(), targetDir)}\n`));
+    } catch (error) {
+      console.error(chalk.red('Error creating symlink:'), error.message);
+    }
+  });
+
+program
+  .command('unlink')
+  .description('Supprime le lien symbolique du projet courant')
+  .option('-d, --dir <directory>', 'Dossier du lien (défaut: .claude/skills)', '.claude/skills')
+  .action(async (options) => {
+    const targetDir = path.resolve(process.cwd(), options.dir);
+
+    if (!(await fs.exists(targetDir))) {
+      console.log(chalk.yellow('No link found to remove.'));
+      return;
+    }
+
+    try {
+      const stats = await fs.lstat(targetDir);
+      if (stats.isSymbolicLink()) {
+        await fs.unlink(targetDir);
+        console.log(chalk.green('\n✓ Link removed.\n'));
+      } else {
+        console.log(chalk.red('The specified directory is not a symbolic link.'));
+      }
+    } catch (error) {
+      console.error(chalk.red('Error removing link:'), error.message);
+    }
   });
 
 program.parse(process.argv);

@@ -2,21 +2,31 @@
 
 A complete ecosystem for distributing and installing Claude Code skills via NPX and GitHub Packages.
 
-## 🛠 Installation
+## 🛠 Installation (Recommended)
 
-You can use this toolkit directly via NPX without prior installation in any project:
+Install once on your machine and share across all projects:
 
 ```bash
-npx @joyboy-dy/felicio-ai-skills <command>
+# 1. Install global storage
+npx @joyboy-dy/felicio-ai-skills init --global
+
+# 2. Link to any project (default to .claude/skills)
+npx @joyboy-dy/felicio-ai-skills link
 ```
+
+*Note: You can specify a custom directory with `link --dir .agents/skills`.*
 
 ## 📜 Available Commands
 
 | Command | Description |
 | :--- | :--- |
-| `init` | Installs **all** available skills into `.claude/skills/` |
+| `init` | Installs skills locally in `.claude/skills/` |
+| `init --global` | Installs skills globally in `~/.felicio-ai-skills/` |
+| `link` | Links global skills to current project |
+| `link --dir <path>` | Links global skills to a specific directory |
+| `unlink` | Removes the link from current project |
 | `list` | Displays the list of all available skills |
-| `add <skill-name>` | Installs a specific skill by its name |
+| `add <name>` | Installs a specific skill locally |
 
 ## 🌟 Included Skills
 
