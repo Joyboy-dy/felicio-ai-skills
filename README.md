@@ -73,6 +73,20 @@ Voici la liste des skills disponibles avec leurs commandes d'installation indivi
 
 Le package est automatiquement publié sur GitHub Packages via GitHub Actions à chaque push sur la branche `main`. Vous devez être authentifié avec votre token GitHub pour l'installer.
 
+## 🛠 Maintenance (Release)
+
+Pour mettre à jour la version du package et déclencher une nouvelle publication :
+
+```bash
+# Pour une mise à jour corrective (patch)
+npm run release:patch
+
+# Pour une nouvelle fonctionnalité mineure (minor)
+npm run release:minor
+```
+
+Ces commandes incrémentent la version dans `package.json`, créent un tag Git et poussent les changements sur GitHub.
+
 ---
 *Maintenu par [Joyboy-dy](https://github.com/Joyboy-dy)*
 
