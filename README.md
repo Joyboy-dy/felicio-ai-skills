@@ -53,6 +53,7 @@ Voici la liste des skills disponibles avec leurs commandes d'installation indivi
 | `nextjs-architecture-pattern` | Next.js best practices & folder structure | `npx @joyboy-dy/felicio-ai-skills add nextjs-architecture-pattern` |
 | `ui-modern-2026` | Premium UI components & references for 2026 | `npx @joyboy-dy/felicio-ai-skills add ui-modern-2026` |
 | `ux-ui-audit` | Comprehensive UX/UI audit checklist | `npx @joyboy-dy/felicio-ai-skills add ux-ui-audit` |
+| `chromatic-design` | Master reference for color science & design tokens | `npx @joyboy-dy/felicio-ai-skills add chromatic-design` |
 
 ### 🧠 Core Skills
 | Skill | Description | Commande d'installation |

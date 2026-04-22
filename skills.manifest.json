@@ -26,6 +26,15 @@
       "files": ["skills/felicio-ai-toolkit/ux-ui-audit/SKILL.md"]
     },
     {
+      "name": "chromatic-design",
+      "description": "Master reference for color science, chromatic management, and design token architecture",
+      "files": [
+        "skills/felicio-ai-toolkit/chromatic-design/SKILL.md",
+        "skills/felicio-ai-toolkit/chromatic-design/references/color-models.md",
+        "skills/felicio-ai-toolkit/chromatic-design/references/wcag-formulas.md"
+      ]
+    },
+    {
       "name": "accessibility-compliance",
       "description": "Skills for building accessible and WCAG compliant interfaces",
       "files": [
