@@ -1,0 +1,152 @@
+﻿================================================================================
+CODEBASE STRUCTURE EXPORT
+================================================================================
+
+Project name : @joyboy-dy/felicio-ai-skills
+Root path    : C:\Users\HP\Desktop\mes-dossiers\dev-workspace\_dev-ressources\felicio-ai-skills
+Generated at : 06/06/2026 02:20:30
+Total files  : 98
+Ignored by   : .gitignore, .git/info/exclude, global Git ignore rules
+
+================================================================================
+PROJECT TREE
+================================================================================
+
+.
+|-- .github
+|   +-- workflows
+|       +-- publish.yml
+|-- bin
+|   +-- index.js
+|-- skills
+|   |-- felicio-ai-toolkit
+|   |   |-- chromatic-design
+|   |   |   |-- references
+|   |   |   |   |-- color-models.md
+|   |   |   |   +-- wcag-formulas.md
+|   |   |   +-- SKILL.md
+|   |   |-- codebase-architecture-guardian
+|   |   |   |-- references
+|   |   |   |   |-- anti-patterns.md
+|   |   |   |   |-- folder-responsibilities.md
+|   |   |   |   |-- output-templates.md
+|   |   |   |   +-- refactoring-playbook.md
+|   |   |   +-- SKILL.md
+|   |   |-- frontend-aesthetics
+|   |   |   +-- SKILL.md
+|   |   |-- nextjs-architecture-pattern
+|   |   |   +-- SKILL.md
+|   |   |-- ui-modern-2026
+|   |   |   |-- references
+|   |   |   |   |-- effects-catalog.md
+|   |   |   |   |-- oklch.md
+|   |   |   |   +-- shadcn-components.md
+|   |   |   +-- SKILL.md
+|   |   +-- ux-ui-audit
+|   |       +-- SKILL.md
+|   |-- from-app-recommendations
+|   |   +-- supabase-postgres-best-practices
+|   |       |-- references
+|   |       |   |-- _contributing.md
+|   |       |   |-- _sections.md
+|   |       |   |-- _template.md
+|   |       |   |-- advanced-full-text-search.md
+|   |       |   |-- advanced-jsonb-indexing.md
+|   |       |   |-- conn-idle-timeout.md
+|   |       |   |-- conn-limits.md
+|   |       |   |-- conn-pooling.md
+|   |       |   |-- conn-prepared-statements.md
+|   |       |   |-- data-batch-inserts.md
+|   |       |   |-- data-n-plus-one.md
+|   |       |   |-- data-pagination.md
+|   |       |   |-- data-upsert.md
+|   |       |   |-- lock-advisory.md
+|   |       |   |-- lock-deadlock-prevention.md
+|   |       |   |-- lock-short-transactions.md
+|   |       |   |-- lock-skip-locked.md
+|   |       |   |-- monitor-explain-analyze.md
+|   |       |   |-- monitor-pg-stat-statements.md
+|   |       |   |-- monitor-vacuum-analyze.md
+|   |       |   |-- query-composite-indexes.md
+|   |       |   |-- query-covering-indexes.md
+|   |       |   |-- query-index-types.md
+|   |       |   |-- query-missing-indexes.md
+|   |       |   |-- query-partial-indexes.md
+|   |       |   |-- schema-constraints.md
+|   |       |   |-- schema-data-types.md
+|   |       |   |-- schema-foreign-key-indexes.md
+|   |       |   |-- schema-lowercase-identifiers.md
+|   |       |   |-- schema-partitioning.md
+|   |       |   |-- schema-primary-keys.md
+|   |       |   |-- security-privileges.md
+|   |       |   |-- security-rls-basics.md
+|   |       |   +-- security-rls-performance.md
+|   |       |-- AGENTS.md
+|   |       |-- CLAUDE.md
+|   |       |-- README.md
+|   |       +-- SKILL.md
+|   +-- from-skills.sh
+|       |-- accessibility-compliance
+|       |   |-- references
+|       |   |   |-- aria-patterns.md
+|       |   |   |-- mobile-accessibility.md
+|       |   |   +-- wcag-guidelines.md
+|       |   +-- SKILL.md
+|       |-- codebase-cleanup-refactor-clean
+|       |   |-- resources
+|       |   |   +-- implementation-playbook.md
+|       |   +-- SKILL.md
+|       |-- code-review-excellence
+|       |   +-- SKILL.md
+|       |-- design-system-patterns
+|       |   |-- references
+|       |   |   |-- component-architecture.md
+|       |   |   |-- design-tokens.md
+|       |   |   +-- theming-architecture.md
+|       |   +-- SKILL.md
+|       |-- responsive-design
+|       |   |-- references
+|       |   |   |-- breakpoint-strategies.md
+|       |   |   |-- container-queries.md
+|       |   |   +-- fluid-layouts.md
+|       |   +-- SKILL.md
+|       |-- skill-creator
+|       |   |-- agents
+|       |   |   |-- analyzer.md
+|       |   |   |-- comparator.md
+|       |   |   +-- grader.md
+|       |   |-- assets
+|       |   |   +-- eval_review.html
+|       |   |-- eval-viewer
+|       |   |   |-- generate_review.py
+|       |   |   +-- viewer.html
+|       |   |-- references
+|       |   |   +-- schemas.md
+|       |   |-- scripts
+|       |   |   |-- __init__.py
+|       |   |   |-- aggregate_benchmark.py
+|       |   |   |-- generate_report.py
+|       |   |   |-- improve_description.py
+|       |   |   |-- package_skill.py
+|       |   |   |-- quick_validate.py
+|       |   |   |-- run_eval.py
+|       |   |   |-- run_loop.py
+|       |   |   +-- utils.py
+|       |   |-- LICENSE.txt
+|       |   +-- SKILL.md
+|       |-- tailwind-design-system
+|       |   +-- SKILL.md
+|       +-- ui-ux-pro-max
+|           |-- data
+|           |-- scripts
+|           +-- SKILL.md
+|-- .gitignore
+|-- .npmrc
+|-- package.json
+|-- package-lock.json
+|-- README.md
++-- skills.manifest.json
+
+================================================================================
+END OF EXPORT
+================================================================================
