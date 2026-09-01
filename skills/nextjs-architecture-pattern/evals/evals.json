@@ -1,0 +1,28 @@
+{
+  "skill_name": "nextjs-architecture-pattern",
+  "evals": [
+    {
+      "id": "app-router",
+      "prompt": "Add an interactive filter to this App Router page while keeping data fetching server-side where possible.",
+      "expectations": [
+        "Detects installed version/router",
+        "Keeps client boundary narrow",
+        "Does not assume a data vendor"
+      ]
+    },
+    {
+      "id": "pages-router",
+      "prompt": "Fix routing/data behavior in this existing Pages Router project without migrating routers.",
+      "expectations": [
+        "Uses Pages Router conventions",
+        "Does not introduce App Router-only APIs",
+        "Runs version-appropriate validation"
+      ]
+    },
+    {
+      "id": "boundary",
+      "prompt": "Review a React app built with Vite, not Next.js.",
+      "expectations": ["Does not apply Next.js architecture"]
+    }
+  ]
+}

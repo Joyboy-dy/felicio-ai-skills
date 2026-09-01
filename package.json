@@ -1,0 +1,38 @@
+{
+  "name": "felicio-ai-skills",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Project-neutral collection of reusable Agent Skills for software engineering, frontend development, UI/UX, architecture, forms, design systems, and delivery workflows.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Joyboy-dy/felicio-ai-skills.git"
+  },
+  "homepage": "https://github.com/Joyboy-dy/felicio-ai-skills#readme",
+  "keywords": [
+    "agent-skills",
+    "ai-agents",
+    "coding-agents",
+    "frontend",
+    "nextjs",
+    "ui-ux",
+    "accessibility",
+    "design-systems",
+    "software-architecture",
+    "developer-tools"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "validate": "python scripts/validate_skills.py",
+    "catalog": "python scripts/skill_catalog.py",
+    "check:python": "python -m compileall -q scripts skills",
+    "check": "pnpm run validate && pnpm run format:check && pnpm run check:python"
+  },
+  "devDependencies": {
+    "prettier": "^3.9.6"
+  }
+}

@@ -1,0 +1,32 @@
+# Node
+node_modules/
+npm-debug.log*
+pnpm-debug.log*
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Environment and secrets
+.env
+.env.*
+!.env.example
+
+# Build, coverage, and generated archives
+coverage/
+dist/
+build/
+*.tar.gz
+
+# Editors and operating systems
+.DS_Store
+Thumbs.db
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+.idea/
+
+# Others 
+*-structure.txt
