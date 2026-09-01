@@ -28,6 +28,25 @@ pnpm dlx skills add Joyboy-dy/felicio-ai-skills --skill ux-ui-audit
 
 Replace `ux-ui-audit` with any skill name from the catalog below.
 
+## Optional companion skills
+
+Felicio AI Skills does not require any external skill. When a project's stack makes another maintainer's expertise useful, the repository documents optional companions instead of bundling or auto-installing them.
+
+Common examples:
+
+```bash
+# Official shadcn/ui project context and CLI conventions
+pnpm dlx skills add shadcn/ui
+
+# React/Next.js performance guidance from Vercel Engineering
+pnpm dlx skills add vercel-labs/agent-skills --skill vercel-react-best-practices
+
+# Additional web interface implementation guidelines from Vercel
+pnpm dlx skills add vercel-labs/agent-skills --skill web-design-guidelines
+```
+
+These are recommendations, not dependencies. Install them only when the project and task match their domain. See [`docs/COMPANION_SKILLS.md`](docs/COMPANION_SKILLS.md) for the pairing matrix, Supabase/Postgres recommendations, community options, and recommendation policy.
+
 ## Skills
 
 | Skill                               | Use it for                                                                           | Do not use it as                                        |
@@ -46,7 +65,7 @@ Replace `ux-ui-audit` with any skill name from the catalog below.
 
 Agents should activate the smallest skill whose trigger matches the task. Skills may compose, but their responsibilities should remain separate: for example, `ux-ui-audit` identifies interface problems, `frontend-aesthetics` proposes visual direction, and `senior-frontend-engineering` implements robust code changes.
 
-Read [`docs/SKILLS_GUIDE.md`](docs/SKILLS_GUIDE.md) for the activation matrix, overlap rules, and bundled script index. Read [`docs/AUTHORING.md`](docs/AUTHORING.md) before adding or changing a skill.
+Read [`docs/SKILLS_GUIDE.md`](docs/SKILLS_GUIDE.md) for the activation matrix, overlap rules, and bundled script index. Read [`docs/COMPANION_SKILLS.md`](docs/COMPANION_SKILLS.md) for optional external skill recommendations. Read [`docs/AUTHORING.md`](docs/AUTHORING.md) before adding or changing a skill.
 
 ## Development
 

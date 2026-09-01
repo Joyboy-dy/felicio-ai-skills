@@ -68,3 +68,21 @@ for skill in skills/*; do skills-ref validate "$skill"; done
 ```
 
 Finally inspect the repository for secrets, absolute local paths, stale project names, unreferenced helper files, and generated artifacts before publishing.
+
+## 9. Optional companion recommendations
+
+External skills are recommendations, not dependencies. Keep the maintained catalog in [`COMPANION_SKILLS.md`](COMPANION_SKILLS.md) rather than copying long external-skill descriptions into every `SKILL.md`.
+
+When adding or revising a recommendation:
+
+- verify the repository, skill name, and installation command against the maintainer's current documentation;
+- prefer an official or maintainer-owned skill when available;
+- label third-party/community skills explicitly;
+- explain the project signal that makes the recommendation relevant;
+- explain what the companion adds without implying that Felicio is incomplete without it;
+- never add auto-install logic for recommended skills;
+- never make validation depend on a companion being installed;
+- document overlap and conflict boundaries so agents do not emit duplicate or contradictory guidance;
+- remove recommendations that become abandoned, misleading, renamed, or absorbed into a better maintained official skill.
+
+The short README section should list only broadly useful, high-confidence companions. Keep the detailed pairing matrix and community recommendations in `docs/COMPANION_SKILLS.md`.

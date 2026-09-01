@@ -31,6 +31,20 @@ This guide answers three questions for an agent: **which skill should activate, 
 
 Agents should preserve existing conventions unless the task explicitly requests a migration. Examples in references are illustrative, not hidden requirements.
 
+## Optional external companions
+
+Felicio skills must remain fully usable without external skills. If the current repository clearly uses a technology covered by a complementary maintainer-owned skill, an agent may recommend that skill as an optional addition. It must not auto-install it, make it a prerequisite, or silently change the task to match the companion.
+
+Use [`COMPANION_SKILLS.md`](COMPANION_SKILLS.md) as the maintained recommendation catalog. In particular:
+
+- recommend the official `shadcn/ui` skill only when the project actually uses shadcn/ui;
+- consider Vercel's `vercel-react-best-practices` for React/Next.js performance work;
+- consider Vercel's `web-design-guidelines` as an additional implementation checklist for interface reviews;
+- consider Supabase's skills only when the project actually uses Supabase/Postgres and the task reaches that layer;
+- label community companions explicitly and prefer maintainer-backed sources when scopes overlap.
+
+When a companion and a Felicio skill overlap, avoid duplicate output. The narrower domain expert supplies its specialty while the Felicio skill keeps ownership of the workflow documented in its own `SKILL.md`.
+
 ## Bundled script index
 
 Scripts are optional accelerators. Agents should read `--help` first when arguments are unclear, prefer read-only/default modes, and treat static scans as evidence to investigate rather than proof of correctness.
