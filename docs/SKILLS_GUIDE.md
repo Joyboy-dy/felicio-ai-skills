@@ -12,6 +12,7 @@ This guide answers three questions for an agent: **which skill should activate, 
 | Form validation, unsaved changes, error messages, submit flow             | `form-ux-validation`                | `senior-frontend-engineering` for implementation    |
 | “Make this UI feel better/premium/coherent”                               | `frontend-aesthetics`               | `chromatic-design` for palette work                 |
 | Next.js App/Pages Router, route groups, server/client boundaries          | `nextjs-architecture-pattern`       | `senior-frontend-engineering`                       |
+| Responsive breakpoints, overflow, collisions, viewport/zoom validation    | `responsive-interface-guardian`     | `ux-ui-audit` for broader interface findings        |
 | Frontend feature/refactor with state, API, components, tests              | `senior-frontend-engineering`       | Framework-specific skill if present                 |
 | Modern CSS capabilities, progressive enhancement, newer UI primitives     | `ui-modern-2026`                    | `frontend-aesthetics`                               |
 | “Audit this interface”, accessibility/state/responsive review             | `ux-ui-audit`                       | `frontend-aesthetics` after findings                |
@@ -24,6 +25,7 @@ This guide answers three questions for an agent: **which skill should activate, 
 4. **Color is its own system.** `chromatic-design` owns palette/tokens/contrast; `frontend-aesthetics` may consume those decisions but should not invent an unrelated color system.
 5. **Containers are optional infrastructure.** `container-compose-ghcr-deployment` activates because the task involves containers, not because every project should adopt them.
 6. **Detect before prescribing.** Every skill must inspect the current project before naming libraries, folder structures, package managers, test runners, CI providers, or deployment targets.
+7. **Responsive robustness is a dedicated concern.** `responsive-interface-guardian` owns content-driven breakpoints, overflow/collision fixes, viewport/zoom validation, and responsive regression checks; `ux-ui-audit` remains responsible for broader evidence-based interface audits and accessibility/state findings.
 
 ## Project-neutrality policy
 
@@ -60,6 +62,7 @@ Scripts are optional accelerators. Agents should read `--help` first when argume
 | `form-ux-validation`                | `scripts/compare_schema_fields.py`   | Compare two explicit field lists/schema-like JSON objects                   |
 | `frontend-aesthetics`               | `scripts/scan_visual_smells.py`      | Locate repeated raw styling values and visual inconsistency candidates      |
 | `nextjs-architecture-pattern`       | `scripts/scan_nextjs_app.py`         | Detect router mode, Next.js version, route files and client boundaries      |
+| `responsive-interface-guardian`     | `scripts/audit-viewports.mjs`        | Run the responsive viewport matrix with Playwright when already available   |
 | `senior-frontend-engineering`       | `scripts/frontend_health.py`         | Inventory frontend scale/ownership smells and test/config signals           |
 | `ui-modern-2026`                    | `scripts/scan_modern_css.py`         | Locate modern CSS features and fallback/support signals                     |
 | `ux-ui-audit`                       | `scripts/scan_a11y_static.py`        | Static accessibility triage for common markup/JSX issues                    |

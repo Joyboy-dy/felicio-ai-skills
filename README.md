@@ -49,17 +49,18 @@ These are recommendations, not dependencies. Install them only when the project 
 
 ## Skills
 
-| Skill                               | Use it for                                                                           | Do not use it as                                        |
-| ----------------------------------- | ------------------------------------------------------------------------------------ | ------------------------------------------------------- |
-| `chromatic-design`                  | Color tokens, palette construction, dark/light pairing, contrast                     | A general visual redesign skill                         |
-| `codebase-architecture-guardian`    | Repository archaeology, boundaries, dependency direction, safe refactors             | A framework-specific implementation guide               |
-| `container-compose-ghcr-deployment` | Docker/Compose/GHCR packaging, CI image delivery, runtime separation                 | A requirement to use containers locally                 |
-| `form-ux-validation`                | Form behavior, dirty state, validation, errors, navigation guards, accessibility     | A mandate for a particular form or schema library       |
-| `frontend-aesthetics`               | Art direction, visual hierarchy, spacing, typography, polish                         | A structural architecture review                        |
-| `nextjs-architecture-pattern`       | Next.js routing, server/client boundaries, data flow, route structure                | Generic frontend architecture outside Next.js           |
-| `senior-frontend-engineering`       | Implementation quality, ownership, state, contracts, maintainability                 | A visual-only audit                                     |
-| `ui-modern-2026`                    | Progressive use of modern CSS/UI capabilities and graceful fallbacks                 | A requirement to chase novelty or one component library |
-| `ux-ui-audit`                       | Evidence-based audit of an existing interface, states, responsiveness, accessibility | Greenfield art direction                                |
+| Skill                               | Use it for                                                                             | Do not use it as                                        |
+| ----------------------------------- | -------------------------------------------------------------------------------------- | ------------------------------------------------------- |
+| `chromatic-design`                  | Color tokens, palette construction, dark/light pairing, contrast                       | A general visual redesign skill                         |
+| `codebase-architecture-guardian`    | Repository archaeology, boundaries, dependency direction, safe refactors               | A framework-specific implementation guide               |
+| `container-compose-ghcr-deployment` | Docker/Compose/GHCR packaging, CI image delivery, runtime separation                   | A requirement to use containers locally                 |
+| `form-ux-validation`                | Form behavior, dirty state, validation, errors, navigation guards, accessibility       | A mandate for a particular form or schema library       |
+| `frontend-aesthetics`               | Art direction, visual hierarchy, spacing, typography, polish                           | A structural architecture review                        |
+| `nextjs-architecture-pattern`       | Next.js routing, server/client boundaries, data flow, route structure                  | Generic frontend architecture outside Next.js           |
+| `responsive-interface-guardian`     | Responsive layout audits, content-driven breakpoints, overflow and viewport validation | A greenfield visual redesign skill                      |
+| `senior-frontend-engineering`       | Implementation quality, ownership, state, contracts, maintainability                   | A visual-only audit                                     |
+| `ui-modern-2026`                    | Progressive use of modern CSS/UI capabilities and graceful fallbacks                   | A requirement to chase novelty or one component library |
+| `ux-ui-audit`                       | Evidence-based audit of an existing interface, states, responsiveness, accessibility   | Greenfield art direction                                |
 
 ## How agents should use this repository
 
