@@ -4,7 +4,7 @@ Felicio AI Skills is designed to work on its own. The skills listed here are **o
 
 Install a companion only when its domain matches the project you are working on. Do not install every recommendation by default, and do not let an external skill override the repository's existing conventions without a reason tied to the task.
 
-> Last reviewed: 2026-09-01. External repositories and skill names can change. Re-check the maintainer's current documentation before publishing a release that changes these recommendations.
+> Last reviewed: 2026-11-13. External repositories and skill names can change. Re-check the maintainer's current documentation before publishing a release that changes these recommendations.
 
 ## Recommendation policy
 
@@ -106,6 +106,48 @@ This is deliberately outside Felicio's core frontend/UI scope. It can complement
 
 Repository: <https://github.com/supabase/agent-skills>
 
+### TanStack Start and Router (TanStack Intent)
+
+**Source:** TanStack maintainers (`TanStack/router`, skills shipped inside the npm packages)  
+**Install (recommended, version-matched to the installed packages):**
+
+```bash
+npx @tanstack/intent@latest install
+```
+
+**Or through skills.sh:**
+
+```bash
+pnpm dlx skills add tanstack/router --skill start-core
+pnpm dlx skills add tanstack/router --skill react-start
+pnpm dlx skills add tanstack/router --skill router-core
+```
+
+Use it when the project depends on `@tanstack/react-start`, `@tanstack/solid-start` or `@tanstack/react-router`. TanStack Intent reads the installed package versions, so the API guidance matches the project. `@tanstack/intent` is labelled alpha.
+
+It complements `tanstack-start-architecture`: the official skills own exact API usage (server functions, middleware, server routes, search params, code splitting, Next.js migration); Felicio owns project layout, execution-boundary decisions, data ownership and validation workflow. When both apply, follow the official skill for API details and Felicio for where code lives.
+
+Current API lookups without installing anything: `https://tanstack.com/start/latest/llms.txt`, the public docs MCP server `https://tanstack.com/mcp`, or `npx @tanstack/cli search-docs "<topic>" --library start --json`.
+
+Repository: <https://github.com/TanStack/router> · Intent: <https://tanstack.com/intent/latest>
+
+### Elysia
+
+**Source:** Elysia maintainers (`elysiajs/skills`)  
+**Install:**
+
+```bash
+bunx skills add elysiajs/skills
+```
+
+Use it only when the project uses Elysia. The skill targets **Elysia 2** (release candidate as of the review date); for an Elysia 1.x project it mainly offers migration guidance, so check the installed version first and fall back to `https://elysiajs.com/llms.txt`.
+
+Repository: <https://github.com/elysiajs/skills>
+
+### Bun
+
+Bun has no official skill for application developers (the skills in `oven-sh/bun` are for contributors to Bun itself). For current Bun APIs, point agents to `https://bun.com/llms.txt` or the official docs MCP server `https://bun.com/docs/mcp`.
+
 ## Community companions
 
 Community skills can be useful, but they are not treated as authoritative merely because they are listed here. Review their repository, recent activity, permissions, scripts, and installation behavior before use.
@@ -137,17 +179,18 @@ Repository: <https://github.com/mattbx/shadcn-skills>
 
 ## Pairing matrix
 
-| Felicio skill                       | Recommended companions when relevant                                                                                                                  |
-| ----------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `chromatic-design`                  | shadcn/ui for shadcn theme conventions; Vercel Web Design Guidelines for additional UI checks; community shadcn component review after implementation |
-| `codebase-architecture-guardian`    | Vercel React Best Practices for React/Next.js performance refactors; Supabase/Postgres skill when the architecture task crosses into that data layer  |
-| `container-compose-ghcr-deployment` | No default companion. Add infrastructure-specific expertise only when the target platform requires it                                                 |
-| `form-ux-validation`                | shadcn/ui for shadcn component composition; Vercel Web Design Guidelines for implementation-level form/accessibility checks                           |
-| `frontend-aesthetics`               | shadcn/ui for shadcn implementation; Vercel Web Design Guidelines as a quality guardrail; community shadcn discovery for registry exploration         |
-| `nextjs-architecture-pattern`       | Vercel React Best Practices; shadcn/ui only when the UI layer actually uses shadcn                                                                    |
-| `senior-frontend-engineering`       | Vercel React Best Practices; Vercel Web Design Guidelines when the task includes interface implementation quality                                     |
-| `ui-modern-2026`                    | Vercel Web Design Guidelines; shadcn/ui when modern capabilities are being integrated into a shadcn project                                           |
-| `ux-ui-audit`                       | Vercel Web Design Guidelines as a second rule set; shadcn/ui or community shadcn review only for shadcn projects                                      |
+| Felicio skill                       | Recommended companions when relevant                                                                                                                       |
+| ----------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `chromatic-design`                  | shadcn/ui for shadcn theme conventions; Vercel Web Design Guidelines for additional UI checks; community shadcn component review after implementation      |
+| `codebase-architecture-guardian`    | Vercel React Best Practices for React/Next.js performance refactors; Supabase/Postgres skill when the architecture task crosses into that data layer       |
+| `container-compose-ghcr-deployment` | No default companion. Add infrastructure-specific expertise only when the target platform requires it                                                      |
+| `form-ux-validation`                | shadcn/ui for shadcn component composition; Vercel Web Design Guidelines for implementation-level form/accessibility checks                                |
+| `frontend-aesthetics`               | shadcn/ui for shadcn implementation; Vercel Web Design Guidelines as a quality guardrail; community shadcn discovery for registry exploration              |
+| `nextjs-architecture-pattern`       | Vercel React Best Practices; shadcn/ui only when the UI layer actually uses shadcn                                                                         |
+| `senior-frontend-engineering`       | Vercel React Best Practices; Vercel Web Design Guidelines when the task includes interface implementation quality                                          |
+| `tanstack-start-architecture`       | Official TanStack Start/Router skills via TanStack Intent; Elysia skill when Start talks to an Elysia backend; Vercel React Best Practices for performance |
+| `ui-modern-2026`                    | Vercel Web Design Guidelines; shadcn/ui when modern capabilities are being integrated into a shadcn project                                                |
+| `ux-ui-audit`                       | Vercel Web Design Guidelines as a second rule set; shadcn/ui or community shadcn review only for shadcn projects                                           |
 
 ## How to recommend a companion to a user
 

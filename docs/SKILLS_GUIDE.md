@@ -4,24 +4,25 @@ This guide answers three questions for an agent: **which skill should activate, 
 
 ## Activation matrix
 
-| User intent or repository signal                                          | Primary skill                       | Common companion                                    |
-| ------------------------------------------------------------------------- | ----------------------------------- | --------------------------------------------------- |
-| “Choose/fix our colors”, token pairing, dark mode contrast                | `chromatic-design`                  | `ux-ui-audit` when auditing an existing UI          |
-| “Understand this codebase”, “where should this live?”, architecture drift | `codebase-architecture-guardian`    | Domain implementation skill                         |
-| Dockerfile, Compose, image build, GHCR, container CI                      | `container-compose-ghcr-deployment` | `codebase-architecture-guardian` for repository fit |
-| Form validation, unsaved changes, error messages, submit flow             | `form-ux-validation`                | `senior-frontend-engineering` for implementation    |
-| “Make this UI feel better/premium/coherent”                               | `frontend-aesthetics`               | `chromatic-design` for palette work                 |
-| Next.js App/Pages Router, route groups, server/client boundaries          | `nextjs-architecture-pattern`       | `senior-frontend-engineering`                       |
-| Responsive breakpoints, overflow, collisions, viewport/zoom validation    | `responsive-interface-guardian`     | `ux-ui-audit` for broader interface findings        |
-| Frontend feature/refactor with state, API, components, tests              | `senior-frontend-engineering`       | Framework-specific skill if present                 |
-| Modern CSS capabilities, progressive enhancement, newer UI primitives     | `ui-modern-2026`                    | `frontend-aesthetics`                               |
-| “Audit this interface”, accessibility/state/responsive review             | `ux-ui-audit`                       | `frontend-aesthetics` after findings                |
+| User intent or repository signal                                                             | Primary skill                       | Common companion                                    |
+| -------------------------------------------------------------------------------------------- | ----------------------------------- | --------------------------------------------------- |
+| “Choose/fix our colors”, token pairing, dark mode contrast                                   | `chromatic-design`                  | `ux-ui-audit` when auditing an existing UI          |
+| “Understand this codebase”, “where should this live?”, architecture drift                    | `codebase-architecture-guardian`    | Domain implementation skill                         |
+| Dockerfile, Compose, image build, GHCR, container CI                                         | `container-compose-ghcr-deployment` | `codebase-architecture-guardian` for repository fit |
+| Form validation, unsaved changes, error messages, submit flow                                | `form-ux-validation`                | `senior-frontend-engineering` for implementation    |
+| “Make this UI feel better/premium/coherent”                                                  | `frontend-aesthetics`               | `chromatic-design` for palette work                 |
+| Next.js App/Pages Router, route groups, server/client boundaries                             | `nextjs-architecture-pattern`       | `senior-frontend-engineering`                       |
+| TanStack Start routes, server functions, middleware, `src/start.ts`, Elysia mounted in Start | `tanstack-start-architecture`       | `senior-frontend-engineering`                       |
+| Responsive breakpoints, overflow, collisions, viewport/zoom validation                       | `responsive-interface-guardian`     | `ux-ui-audit` for broader interface findings        |
+| Frontend feature/refactor with state, API, components, tests                                 | `senior-frontend-engineering`       | Framework-specific skill if present                 |
+| Modern CSS capabilities, progressive enhancement, newer UI primitives                        | `ui-modern-2026`                    | `frontend-aesthetics`                               |
+| “Audit this interface”, accessibility/state/responsive review                                | `ux-ui-audit`                       | `frontend-aesthetics` after findings                |
 
 ## Composition rules
 
 1. **Audit before redesign when the task starts from an existing interface.** `ux-ui-audit` records evidence and severity; it should not silently turn into a redesign.
 2. **Architecture before broad refactor.** `codebase-architecture-guardian` discovers ownership and dependencies; implementation skills then make the change.
-3. **Domain-specific beats generic.** On a Next.js architecture question, `nextjs-architecture-pattern` owns routing and rendering boundaries while `senior-frontend-engineering` owns broader frontend implementation quality.
+3. **Domain-specific beats generic.** On a Next.js or TanStack Start architecture question, `nextjs-architecture-pattern` or `tanstack-start-architecture` owns routing and rendering boundaries while `senior-frontend-engineering` owns broader frontend implementation quality.
 4. **Color is its own system.** `chromatic-design` owns palette/tokens/contrast; `frontend-aesthetics` may consume those decisions but should not invent an unrelated color system.
 5. **Containers are optional infrastructure.** `container-compose-ghcr-deployment` activates because the task involves containers, not because every project should adopt them.
 6. **Detect before prescribing.** Every skill must inspect the current project before naming libraries, folder structures, package managers, test runners, CI providers, or deployment targets.
@@ -64,6 +65,7 @@ Scripts are optional accelerators. Agents should read `--help` first when argume
 | `nextjs-architecture-pattern`       | `scripts/scan_nextjs_app.py`         | Detect router mode, Next.js version, route files and client boundaries      |
 | `responsive-interface-guardian`     | `scripts/audit-viewports.mjs`        | Run the responsive viewport matrix with Playwright when already available   |
 | `senior-frontend-engineering`       | `scripts/frontend_health.py`         | Inventory frontend scale/ownership smells and test/config signals           |
+| `tanstack-start-architecture`       | `scripts/scan_tanstack_start.py`     | Detect Start version, required files, routes, server functions, stale APIs  |
 | `ui-modern-2026`                    | `scripts/scan_modern_css.py`         | Locate modern CSS features and fallback/support signals                     |
 | `ux-ui-audit`                       | `scripts/scan_a11y_static.py`        | Static accessibility triage for common markup/JSX issues                    |
 
