@@ -4,7 +4,8 @@ from __future__ import annotations
 import argparse,json,re
 from pathlib import Path
 SENSITIVE=re.compile(r'(^|/)(\.env(?:\..*)?|id_rsa|id_ed25519|.*\.(?:pem|key|p12))$',re.I)
-FILES=['Dockerfile','.dockerignore','compose.yml','compose.yaml','docker-compose.yml','docker-compose.yaml','package.json','pyproject.toml','go.mod','Cargo.toml']
+FILES=['Dockerfile','.dockerignore','compose.yml','compose.yaml','docker-compose.yml','docker-compose.yaml','package.json','pyproject.toml','go.mod','Cargo.toml','bun.lock','bun.lockb','bunfig.toml','pnpm-lock.yaml','yarn.lock','package-lock.json']
+LOCKS={'bun.lock':'bun','bun.lockb':'bun','pnpm-lock.yaml':'pnpm','yarn.lock':'yarn','package-lock.json':'npm'}
 def slurp(p):
  try:return p.read_text(encoding='utf-8',errors='ignore')
  except OSError:return ''
@@ -26,6 +27,11 @@ def main():
  suspicious=[]
  for p in root.iterdir():
   if p.is_file() and SENSITIVE.search(p.name): suspicious.append(p.name)
- data={'root':str(root),'found':found,'github_workflows':workflows,'static_issues':issues,'sensitive_root_filenames_detected':suspicious,'note':'Static scan only; it does not prove that an image builds, runs, or is deployable.'}
+ declared=''
+ try:declared=str(json.loads(slurp(root/'package.json') or '{}').get('packageManager',''))
+ except (ValueError,AttributeError):pass
+ managers=sorted({m for l,m in LOCKS.items() if (root/l).exists()})
+ if len(managers)>1:issues.append(f'several lockfiles found ({", ".join(managers)}); confirm which package manager the image must use')
+ data={'root':str(root),'found':found,'package_manager':{'declared':declared or None,'lockfiles':managers},'github_workflows':workflows,'static_issues':issues,'sensitive_root_filenames_detected':suspicious,'note':'Static scan only; it does not prove that an image builds, runs, or is deployable.'}
  print(json.dumps(data,indent=2))
 if __name__=='__main__':main()
