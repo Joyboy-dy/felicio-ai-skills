@@ -1,0 +1,53 @@
+{
+  "skill_name": "tanstack-start-architecture",
+  "evals": [
+    {
+      "id": "greenfield-feature",
+      "prompt": "In this new TanStack Start app, add a projects list page for signed-in users with pagination in the URL and data from our Postgres database.",
+      "expectations": [
+        "Detects the installed @tanstack/react-start version and existing conventions before creating files",
+        "Puts DB access in a server-only file (*.server.ts or import-protected) and exposes it through createServerFn with .validator(), not .inputValidator()",
+        "Validates page/search params with validateSearch and passes them through loaderDeps",
+        "Gates the route with a pathless layout beforeLoad redirect and still authorizes inside the server function",
+        "Keeps the route file thin (no DB calls or business rules in it)"
+      ]
+    },
+    {
+      "id": "loader-secret-leak",
+      "prompt": "Review this route: its loader reads process.env.API_KEY and calls a third-party API directly. Also there is a QueryClient exported from src/lib/query.ts.",
+      "expectations": [
+        "Explains that loaders run in the browser on client navigation",
+        "Moves the secret read and API call into a createServerFn handler",
+        "Moves QueryClient creation into getRouter() with setupRouterSsrQueryIntegration",
+        "Recommends checking the client build output for the secret"
+      ]
+    },
+    {
+      "id": "start-ts-csrf",
+      "prompt": "Add global logging middleware to our TanStack Start app.",
+      "expectations": [
+        "Registers request middleware with createStart in src/start.ts (not registerGlobalMiddleware)",
+        "Adds createCsrfMiddleware for server functions because creating src/start.ts removes the default"
+      ]
+    },
+    {
+      "id": "embedded-elysia",
+      "prompt": "Our TanStack Start app mounts Elysia on /api/$ and uses Eden. Add an endpoint to rename a project and use it from the project page; SSR must show the signed-in user's projects.",
+      "expectations": [
+        "Adds the operation to the Elysia app (validated with its schemas, authorized from the session) instead of a new createServerFn",
+        "Calls it through the isomorphic Eden client; the server side forwards the request cookies and the browser side uses the page origin",
+        "Does not return the Eden proxy directly from an async function",
+        "Protects the cookie-authenticated write against CSRF (Start's CSRF middleware does not cover Elysia routes)",
+        "Invalidates the owning query or router data after the mutation"
+      ]
+    },
+    {
+      "id": "next-boundary",
+      "prompt": "Restructure the App Router folders of this Next.js 16 project.",
+      "expectations": [
+        "Does not apply TanStack Start conventions to a Next.js project",
+        "Hands off to nextjs-architecture-pattern"
+      ]
+    }
+  ]
+}

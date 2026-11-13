@@ -2,7 +2,7 @@
 
 [![skills.sh](https://skills.sh/b/Joyboy-dy/felicio-ai-skills)](https://skills.sh/Joyboy-dy/felicio-ai-skills)
 
-A project-neutral collection of reusable Agent Skills for frontend engineering, interface quality, codebase architecture, forms, color systems, Next.js architecture, and container delivery.
+A project-neutral collection of reusable Agent Skills for frontend engineering, interface quality, codebase architecture, forms, color systems, Next.js and TanStack Start architecture, and container delivery.
 
 Every skill is self-contained under `skills/<skill-name>/` and follows the Agent Skills directory convention: a required `SKILL.md`, with optional `scripts/`, `references/`, `assets/`, and `evals/` resources loaded only when useful.
 
@@ -41,6 +41,9 @@ pnpm dlx skills add shadcn/ui
 # React/Next.js performance guidance from Vercel Engineering
 pnpm dlx skills add vercel-labs/agent-skills --skill vercel-react-best-practices
 
+# Official TanStack Start/Router skills, version-pinned in the npm packages
+npx @tanstack/intent@latest install
+
 # Additional web interface implementation guidelines from Vercel
 pnpm dlx skills add vercel-labs/agent-skills --skill web-design-guidelines
 ```
@@ -49,18 +52,19 @@ These are recommendations, not dependencies. Install them only when the project 
 
 ## Skills
 
-| Skill                               | Use it for                                                                             | Do not use it as                                        |
-| ----------------------------------- | -------------------------------------------------------------------------------------- | ------------------------------------------------------- |
-| `chromatic-design`                  | Color tokens, palette construction, dark/light pairing, contrast                       | A general visual redesign skill                         |
-| `codebase-architecture-guardian`    | Repository archaeology, boundaries, dependency direction, safe refactors               | A framework-specific implementation guide               |
-| `container-compose-ghcr-deployment` | Docker/Compose/GHCR packaging, CI image delivery, runtime separation                   | A requirement to use containers locally                 |
-| `form-ux-validation`                | Form behavior, dirty state, validation, errors, navigation guards, accessibility       | A mandate for a particular form or schema library       |
-| `frontend-aesthetics`               | Art direction, visual hierarchy, spacing, typography, polish                           | A structural architecture review                        |
-| `nextjs-architecture-pattern`       | Next.js routing, server/client boundaries, data flow, route structure                  | Generic frontend architecture outside Next.js           |
-| `responsive-interface-guardian`     | Responsive layout audits, content-driven breakpoints, overflow and viewport validation | A greenfield visual redesign skill                      |
-| `senior-frontend-engineering`       | Implementation quality, ownership, state, contracts, maintainability                   | A visual-only audit                                     |
-| `ui-modern-2026`                    | Progressive use of modern CSS/UI capabilities and graceful fallbacks                   | A requirement to chase novelty or one component library |
-| `ux-ui-audit`                       | Evidence-based audit of an existing interface, states, responsiveness, accessibility   | Greenfield art direction                                |
+| Skill                               | Use it for                                                                                           | Do not use it as                                        |
+| ----------------------------------- | ---------------------------------------------------------------------------------------------------- | ------------------------------------------------------- |
+| `chromatic-design`                  | Color tokens, palette construction, dark/light pairing, contrast                                     | A general visual redesign skill                         |
+| `codebase-architecture-guardian`    | Repository archaeology, boundaries, dependency direction, safe refactors                             | A framework-specific implementation guide               |
+| `container-compose-ghcr-deployment` | Docker/Compose/GHCR packaging, CI image delivery, runtime separation                                 | A requirement to use containers locally                 |
+| `form-ux-validation`                | Form behavior, dirty state, validation, errors, navigation guards, accessibility                     | A mandate for a particular form or schema library       |
+| `frontend-aesthetics`               | Art direction, visual hierarchy, spacing, typography, polish                                         | A structural architecture review                        |
+| `nextjs-architecture-pattern`       | Next.js routing, server/client boundaries, data flow, route structure                                | Generic frontend architecture outside Next.js           |
+| `responsive-interface-guardian`     | Responsive layout audits, content-driven breakpoints, overflow and viewport validation               | A greenfield visual redesign skill                      |
+| `senior-frontend-engineering`       | Implementation quality, ownership, state, contracts, maintainability                                 | A visual-only audit                                     |
+| `tanstack-start-architecture`       | TanStack Start layout, server functions, middleware, execution boundaries, loaders/Query, validation | A plain TanStack Router SPA or a Next.js project        |
+| `ui-modern-2026`                    | Progressive use of modern CSS/UI capabilities and graceful fallbacks                                 | A requirement to chase novelty or one component library |
+| `ux-ui-audit`                       | Evidence-based audit of an existing interface, states, responsiveness, accessibility                 | Greenfield art direction                                |
 
 ## How agents should use this repository
 
