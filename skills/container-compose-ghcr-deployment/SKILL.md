@@ -64,6 +64,8 @@ For compiled/bundled applications, prefer a multi-stage build when it materially
 
 Do not copy the entire repository into the final stage by habit. Do not install development dependencies in the runtime image unless they are required at runtime.
 
+When the repository uses Bun (lockfile, `packageManager`, `Bun.*` APIs), read `references/bun-images.md` for base images, frozen workspace installs, the runtime user and single-binary builds.
+
 ### 4. Harden build context
 
 Create or update `.dockerignore` to exclude at least applicable examples such as:
